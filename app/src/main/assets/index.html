@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#12242a">
+  <title>工位争锋</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <canvas id="arena" aria-label="三路战场"></canvas>
+    <div id="vignette"></div>
+
+    <section id="selection" class="full-overlay">
+      <header class="select-header">
+        <div class="brand"><span class="brand-mark">▣</span><div><strong>工位争锋</strong><small>SHIFTFRONT · OFFICE ARENA</small></div></div>
+        <span class="mode-pill"><i></i> 单机 · 5V5</span>
+      </header>
+      <div class="select-content">
+        <div class="hero-preview">
+          <div class="preview-aura"></div>
+          <canvas id="portrait" aria-hidden="true"></canvas>
+          <div class="hero-identity"><span id="hero-job"></span><h1 id="hero-name"></h1><div class="hero-skills" id="hero-skills"></div></div>
+        </div>
+        <div class="select-side"><div class="roster-heading"><span>选择职业</span><span class="roster-count">06 / 06</span></div><div id="roster" class="roster"></div><button id="start" class="start-btn" type="button">开始对局 <span>↗</span></button></div>
+      </div>
+      <div class="select-footer"><span>晨会阵营</span><span class="vs-line"></span><span>截止阵营</span></div>
+    </section>
+
+    <div id="hud" class="hidden">
+      <div class="hud-top">
+        <div class="player-card"><canvas id="hud-avatar" aria-hidden="true"></canvas><div class="player-meter"><div class="player-name"><strong id="hud-name"></strong><span id="hud-level">LV 1</span></div><div class="meter health"><span id="hp-fill"></span></div><div class="meter energy"><span id="energy-fill"></span></div></div><button class="gold-button" id="shop-toggle" type="button" title="装备商店">◈ <span id="gold">220</span></button></div>
+        <button id="score-toggle" class="scoreboard-toggle" type="button" title="查看战绩"><strong id="score-blue">0</strong><span>:</span><strong id="score-red">0</strong><small id="match-time">00:00</small></button>
+        <button class="icon-button pause-button" id="pause-toggle" type="button" title="暂停游戏" aria-label="暂停游戏">Ⅱ</button>
+      </div>
+      <div class="mini-frame"><canvas id="minimap" title="战场小地图"></canvas><span class="mini-label">战术地图</span></div>
+      <div id="notice" class="notice hidden"></div>
+      <div id="respawn" class="respawn hidden"></div>
+      <div id="joystick" class="joystick" aria-label="移动摇杆"><div id="joystick-thumb" class="joystick-thumb"></div></div>
+      <div class="actions"><div class="skills"><button class="skill" id="skill-0" type="button"><span class="skill-icon"></span><span class="skill-name"></span><span class="cooldown hidden"></span></button><button class="skill" id="skill-1" type="button"><span class="skill-icon"></span><span class="skill-name"></span><span class="cooldown hidden"></span></button><button class="skill ultimate" id="skill-2" type="button"><span class="skill-icon"></span><span class="skill-name"></span><span class="cooldown hidden"></span></button></div><button id="attack" class="attack-button" type="button" title="普通攻击"><span>⚔</span><small>攻击</small></button></div>
+    </div>
+
+    <section id="shop" class="modal hidden" aria-label="装备商店"><div class="modal-card shop-card"><header><div><small>补给站</small><h2>装备商店</h2></div><button class="close-button" data-close="shop" title="关闭商店" aria-label="关闭商店">×</button></header><div class="shop-funds">当前资金 <strong id="shop-gold">0</strong><span>◈</span></div><div id="shop-items" class="shop-items"></div></div></section>
+    <section id="scoreboard" class="modal hidden" aria-label="对局战绩"><div class="modal-card scoreboard-card"><header><div><small>对局数据</small><h2>战况一览</h2></div><button class="close-button" data-close="scoreboard" title="关闭战绩" aria-label="关闭战绩">×</button></header><div id="score-rows"></div></div></section>
+    <section id="pause" class="modal hidden" aria-label="暂停菜单"><div class="modal-card pause-card"><header><div><small>暂停中</small><h2>工位争锋</h2></div></header><button id="resume" type="button" class="primary-menu">继续对局</button><button id="sound-toggle" type="button" class="secondary-menu">音效：开启</button><button id="leave" type="button" class="secondary-menu">退出对局</button></div></section>
+    <section id="result" class="modal hidden" aria-label="结算界面"><div class="modal-card result-card"><small id="result-caption"></small><h2 id="result-title"></h2><div class="result-stats"><div><strong id="result-kills"></strong><span>击败</span></div><div><strong id="result-deaths"></strong><span>阵亡</span></div><div><strong id="result-duration"></strong><span>时长</span></div></div><button id="replay" type="button" class="primary-menu">再来一局</button><button id="home" type="button" class="secondary-menu">返回选人</button></div></section>
+    <div id="rotate" class="rotate"><span>▣</span><strong>工位争锋</strong><p>请将设备横置</p></div>
+  </div>
+  <script src="game.js"></script>
+  <script src="render.js"></script>
+  <script src="scene3d.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
